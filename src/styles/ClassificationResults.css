@@ -1,0 +1,282 @@
+.classification-results {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem 2vw 1.5rem 2vw;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  min-height: auto;
+}
+
+.classification-results h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Result Cards Grid */
+.result-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.result-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f7 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.result-card.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-top: none;
+}
+
+.result-card.primary .card-label,
+.result-card.primary .card-unit {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.result-card.primary .card-value {
+  color: white;
+}
+
+.result-card.success {
+  border-top-color: #10b981;
+}
+
+.result-card.warning {
+  border-top-color: #f59e0b;
+}
+
+.card-label {
+  color: #666;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.card-value {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.result-card.primary .card-value {
+  font-size: 2rem;
+}
+
+.card-unit {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Sections */
+.section-container {
+  margin-bottom: 2rem;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.section-header:hover {
+  background: #f0f2f7;
+}
+
+.section-header h3 {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expand-icon {
+  color: #667eea;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.section-content {
+  padding: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Probability Bars */
+.probability-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.probability-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.class-label {
+  min-width: 150px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.probability-value {
+  min-width: 60px;
+  text-align: right;
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.9rem;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.info-label {
+  color: #666;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-value {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Energy Breakdown */
+.energy-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.energy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.energy-label {
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.energy-value {
+  color: #667eea;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.total-energy {
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .classification-results {
+    padding: 1.5rem;
+  }
+
+  .result-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .energy-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    padding: 1rem;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+}

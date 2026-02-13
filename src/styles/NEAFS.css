@@ -1,0 +1,233 @@
+.neafs-main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.neafs-main-content {
+  flex: 1;
+  margin-left: 260px;
+  margin-top: 70px;
+  padding: 2rem 2vw;
+  transition: margin-left 0.3s ease;
+  overflow-y: auto;
+  width: calc(100vw - 260px);
+  height: calc(100vh - 70px);
+  max-width: 1400px;
+  box-sizing: border-box;
+}
+
+.side-nav.open ~ .neafs-main-content {
+  margin-left: 260px;
+}
+
+.side-nav.closed ~ .neafs-main-content {
+  margin-left: 80px;
+}
+
+.neafs-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.neafs-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 3rem;
+}
+
+.neafs-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.neafs-full-name {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 1rem 0;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.neafs-acronym {
+  font-size: 1.2rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 0.5rem 0 0 0;
+}
+
+.neafs-tagline {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.prediction-section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem 1vw 1rem 1vw;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  min-height: 60vh;
+}
+
+.features-overview {
+  margin-bottom: 3rem;
+}
+
+.features-overview > h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.neafs-content {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.neafs-card {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.neafs-card h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.neafs-card p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.neafs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-top: 4px solid #667eea;
+}
+
+/* Remove header styles, add centered container for form */
+.neafs-centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 80vh;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  color: #667eea;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.stat p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .neafs-main-content {
+    padding: 1.5rem;
+  }
+
+  .neafs-content {
+    padding: 2rem;
+  }
+
+  .neafs-full-name {
+    font-size: 2rem;
+  }
+
+  .neafs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .neafs-main-content {
+    margin-left: 70px;
+    padding: 1rem;
+  }
+
+  .side-nav.open ~ .neafs-main-content {
+    margin-left: 260px;
+  }
+
+  .neafs-header {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .neafs-icon {
+    font-size: 3rem;
+  }
+
+  .neafs-full-name {
+    font-size: 1.5rem;
+  }
+
+  .neafs-acronym {
+    font-size: 1rem;
+  }
+
+  .neafs-content {
+    padding: 1.5rem;
+  }
+
+  .neafs-card {
+    margin-bottom: 2rem;
+  }
+
+  .neafs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .neafs-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .stat h3 {
+    font-size: 1.8rem;
+  }
+}

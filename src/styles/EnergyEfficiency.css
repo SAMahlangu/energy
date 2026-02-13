@@ -1,0 +1,50 @@
+.energy-efficiency-main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* allow full-page scrolling */
+  background-color: #f8fafc;
+}
+
+.energy-efficiency-main-content {
+  display: flex;
+  flex: 1;
+}
+
+.energy-efficiency-container {
+  flex: 1;
+  overflow: visible; /* let the browser/page handle vertical scrolling */
+  width: 100%;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+}
+
+.energy-efficiency-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.energy-efficiency-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.energy-efficiency-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.energy-efficiency-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .energy-efficiency-main-container {
+    min-height: auto;
+  }
+
+  .energy-efficiency-main-content {
+    flex-direction: column;
+  }
+
+  .energy-efficiency-container {
+    overflow: visible;
+  }
+}

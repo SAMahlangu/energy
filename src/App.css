@@ -1,0 +1,7 @@
+.App {
+  width: 100%;
+  min-height: 100vh; /* let content define height so page can scroll */
+  margin: 0;
+  padding: 0;
+}
+
