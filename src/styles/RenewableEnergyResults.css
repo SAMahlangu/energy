@@ -1,0 +1,294 @@
+/* Renewable Energy Results Styles */
+.rer-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 2rem auto 0;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rer-container h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rer-container h4 {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ff9500;
+}
+
+/* Summary Cards */
+.rer-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.rer-card {
+  background: linear-gradient(135deg, #fff8f0 0%, #ffe8cc 100%);
+  border: 1px solid #ffd699;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-label {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  display: block;
+  color: #ff9500;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Main Recommendation */
+.rer-main-recommendation {
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rer-main-recommendation.candidate {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border: 2px solid #28a745;
+}
+
+.rer-main-recommendation.not-candidate {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  border: 2px solid #dc3545;
+}
+
+.recommendation-icon {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.recommendation-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.rer-main-recommendation.candidate .recommendation-text {
+  color: #28a745;
+}
+
+.rer-main-recommendation.not-candidate .recommendation-text {
+  color: #dc3545;
+}
+
+/* Reasons */
+.rer-reasons {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #ff9500;
+}
+
+.reasons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reasons-list li {
+  color: #555;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.reasons-list li:before {
+  content: "→";
+  color: #ff9500;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Analysis Sections */
+.rer-analysis-section,
+.rer-financial-section,
+.rer-grid-section {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #ff9500;
+}
+
+.rer-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.rer-metric {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.metric-label {
+  display: block;
+  color: #999;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.metric-value {
+  display: block;
+  color: #ff9500;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.metric-unit {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* Financial Metrics */
+.rer-financial-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.financial-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+.financial-item.highlight {
+  background: linear-gradient(135deg, #fff8f0 0%, #ffe8cc 100%);
+  border-color: #ffd699;
+}
+
+.item-label {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.item-value {
+  display: block;
+  color: #ff9500;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.item-unit {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* Grid Metrics */
+.grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.grid-metric {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Info Box */
+.rer-info-box {
+  background: #e7f3ff;
+  border-left: 4px solid #0066cc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.rer-info-box p {
+  color: #004085;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rer-container {
+    padding: 1.5rem;
+    margin: 1.5rem auto 0;
+  }
+
+  .rer-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rer-metrics-grid,
+  .rer-financial-metrics,
+  .grid-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .rer-main-recommendation {
+    padding: 1.5rem;
+  }
+
+  .recommendation-icon {
+    font-size: 2rem;
+  }
+
+  .recommendation-text {
+    font-size: 1rem;
+  }
+}

@@ -13,6 +13,9 @@ function SideNavigation({ isOpen, open }) {
     { icon: '🏛️', label: 'Energy Efficiency Rating', fullName: 'Energy Efficiency Rating Prediction', href: '/energy-efficiency', submenu: null },
     { icon: '🔧', label: 'EPC Impact Analysis', fullName: 'EPC Impact Analysis & Energy Savings Forecasting', href: '/analytics/epc-analysis', submenu: null },
     { icon: '🏢', label: 'Building Classification', href: '/analytics/building-classification', submenu: null },
+    { icon: '📋', label: 'Batch Compliance', fullName: 'Batch Compliance Analysis', href: '/analytics/batch-compliance', submenu: null },
+    { icon: '🔍', label: 'Anomaly Detection', fullName: 'Energy Anomaly Detector', href: '/analytics/anomaly-detection', submenu: null },
+    { icon: '☀️', label: 'Renewable Energy', fullName: 'Renewable Energy Adoption Potential', href: '/analytics/renewable-energy', submenu: null },
     // { icon: '💰', label: 'Billing', href: '#billing', submenu: null },
     // { icon: '⚙️', label: 'Settings', href: '#settings', submenu: null },
   ]

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import * as XLSX from 'xlsx'
 import '../styles/BuildingClassificationForm.css'
 
-function BuildingClassificationForm({ onClassify }) {
+function BuildingClassificationForm({ onClassify, onBatchDataLoaded, batchModeOnly = false }) {
+  const [activeTab, setActiveTab] = useState(batchModeOnly ? 'batch' : 'single') // 'single' or 'batch'
   const [formData, setFormData] = useState({
     entity_type: 'Private',
     ownership_type: 'owned',
@@ -21,6 +23,8 @@ function BuildingClassificationForm({ onClassify }) {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [batchLoading, setBatchLoading] = useState(false)
+  const [batchStatus, setBatchStatus] = useState('')
 
   const handleInputChange = (e) => {
     const { name, value, type } = e.target
@@ -93,21 +97,135 @@ function BuildingClassificationForm({ onClassify }) {
     setError('')
   }
 
+  const handleBatchFileUpload = (e) => {
+    const { files } = e.target
+    if (files.length !== 2) {
+      setBatchStatus('⚠️ Please upload exactly 2 files: NBEPR + EPC')
+      return
+    }
+
+    setBatchLoading(true)
+    setBatchStatus('Processing files...')
+
+    let registryData = null
+    let epcData = null
+    let filesProcessed = 0
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader()
+      
+      reader.onload = (event) => {
+        try {
+          const workbook = XLSX.read(event.target.result, { type: 'binary' })
+          const sheetName = workbook.SheetNames[0]
+          const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName])
+
+          if (file.name.toLowerCase().includes('nbepr')) {
+            registryData = data
+          } else if (file.name.toLowerCase().includes('epc')) {
+            epcData = data
+          }
+
+          filesProcessed++
+          if (filesProcessed === 2) {
+            if (registryData && epcData) {
+              onBatchDataLoaded({ registry: registryData, epc: epcData })
+              setBatchStatus('✅ Files loaded successfully!')
+              setBatchLoading(false)
+            }
+          }
+        } catch (err) {
+          setBatchStatus(`❌ Error reading file: ${err.message}`)
+          setBatchLoading(false)
+        }
+      }
+
+      reader.readAsBinaryString(file)
+    })
+  }
+
   return (
     <div className="bc-form">
-      <h2>🏢 Building Occupancy Classifier</h2>
-      <p className="form-description">
-        Enter building details to predict occupancy classification based on energy patterns.
-      </p>
+      {/* Tab Navigation */}
+      {!batchModeOnly && (
+        <div className="bc-tab-navigation">
+          <button 
+            className={`bc-tab ${activeTab === 'single' ? 'active' : ''}`}
+            onClick={() => setActiveTab('single')}
+          >
+            Single Building
+          </button>
+          <button 
+            className={`bc-tab ${activeTab === 'batch' ? 'active' : ''}`}
+            onClick={() => setActiveTab('batch')}
+          >
+            Batch Compliance Analysis
+          </button>
+        </div>
+      )}
 
-      {error && (
+      {activeTab === 'single' && !batchModeOnly ? (
+        <>
+          <h2>🏢 Building Occupancy Classifier</h2>
+          <p className="form-description">
+            Enter building details to predict occupancy classification based on energy patterns.
+          </p>
+        </>
+      ) : (
+        <>
+          <h2>📊 Building Compliance & Risk Analysis</h2>
+          <p className="form-description">
+            Upload NBEPR and EPC datasets to analyze compliance and calculate risk scores.
+          </p>
+        </>
+      )}
+      
+
+      {activeTab === 'single' && error && (
         <div className="error-message">
           <span className="error-icon">⚠️</span>
           {error}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bc-form-container">
+      {activeTab === 'batch' ? (
+        <div className="bc-batch-upload">
+          <div className="bc-upload-box">
+            <div className="bc-upload-icon">📁</div>
+            <p>Upload both compliance files to begin analysis</p>
+            
+            <label htmlFor="batch-file-input" className="bc-file-input-label">
+              <input
+                id="batch-file-input"
+                type="file"
+                multiple
+                accept=".xlsx,.xls"
+                onChange={handleBatchFileUpload}
+                disabled={batchLoading}
+                style={{ display: 'none' }}
+              />
+              <span className="bc-upload-btn">
+                {batchLoading ? 'Processing...' : 'Select Files (NBEPR + EPC)'}
+              </span>
+            </label>
+
+            <div className="bc-file-requirements">
+              <p><strong>Required Files:</strong></p>
+              <ul>
+                <li>Building Registered on the NBEPR.xlsx</li>
+                <li>Building Issued with EPCs.xlsx</li>
+              </ul>
+            </div>
+
+            {batchStatus && (
+              <div className={`bc-status-message ${batchStatus.includes('✅') ? 'success' : 'error'}`}>
+                {batchStatus}
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="bc-form-container">
         {/* Building Information Section */}
         <div className="form-section">
           <h3>🏢 Building Information</h3>
@@ -339,7 +457,8 @@ function BuildingClassificationForm({ onClassify }) {
             🎲 Randomize Inputs
           </button>
         </div>
-      </form>
+        </form>
+      )}
     </div>
   )
 }
