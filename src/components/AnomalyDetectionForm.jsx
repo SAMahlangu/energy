@@ -61,7 +61,7 @@ function AnomalyDetectionForm({ onDetect }) {
     setError('')
 
     try {
-      const response = await axios.post('https://13.51.130.19/api/anomaly-detect', {
+      const response = await axios.post('http://13.49.72.166/api/anomaly-detect', {
         energy_per_m2: parseFloat(formData.energy_per_m2),
         fuel_intensity: parseFloat(formData.fuel_intensity),
         electricity_intensity: parseFloat(formData.electricity_intensity),

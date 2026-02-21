@@ -49,7 +49,7 @@ function BuildingClassificationForm({ onClassify, onBatchDataLoaded, batchModeOn
     setError('')
 
     try {
-      const response = await axios.post('https://13.51.130.19/api/classify', {
+      const response = await axios.post('http://13.49.72.166/api/classify', {
         entity_type: formData.entity_type,
         ownership_type: formData.ownership_type,
         billing_type: formData.billing_type,
