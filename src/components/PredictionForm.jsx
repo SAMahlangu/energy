@@ -71,7 +71,7 @@ function PredictionForm({ onPredict }) {
 
       // Make prediction request directly to Flask backend
       // (keep URL consistent with other features)
-      const response = await axios.post('http://13.49.72.166/api/predict', {
+      const response = await axios.post('/api/predict', {
         features: features,
         model: 'all'
       })

@@ -38,7 +38,7 @@ function EnergyEfficiencyForm({ onPrediction }) {
     setError('')
 
     try {
-      const response = await axios.post('http://13.49.72.166/api/energy-efficiency', {
+      const response = await axios.post('/api/energy-efficiency', {
         floor_area: formData.floor_area,
         year_built: formData.year_built,
         no_floors: formData.no_floors,
