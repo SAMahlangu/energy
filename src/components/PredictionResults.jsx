@@ -39,8 +39,8 @@ function PredictionResults({ predictions, formData }) {
           formData.renewable_kwh,
         ]
 
-        const provReq = axios.get('http://localhost:5000/api/province-benchmark')
-        const ciReq = axios.post('http://localhost:5000/api/prediction-ci', { features })
+        const provReq = axios.get('https://13.51.130.19/api/province-benchmark')
+        const ciReq = axios.post('https://13.51.130.19/api/prediction-ci', { features })
 
         const [provRes, ciRes] = await Promise.all([provReq, ciReq])
 
