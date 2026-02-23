@@ -75,7 +75,7 @@ function RenewableEnergyForm({ onAnalyze }) {
     setError('')
 
     try {
-      const response = await axios.post('/api/renewable-energy-potential', {
+      const response = await axios.post('http://13.51.164.20/api/renewable-energy-potential', {
         size: parseFloat(formData.size),
         total_energy_consumption: parseFloat(formData.total_energy_consumption),
         grid_usage: parseFloat(formData.grid_usage),
