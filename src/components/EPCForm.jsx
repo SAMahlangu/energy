@@ -36,7 +36,7 @@ function EPCForm({ onAnalysis }) {
     setError('')
 
     try {
-      const response = await axios.post('/api/epc-analysis', {
+      const response = await axios.post('http://13.51.164.20/api/epc-analysis', {
         baseline_energy: formData.baseline_energy,
         efficiency_improvement: formData.efficiency_improvement,
         tariff: formData.tariff,
